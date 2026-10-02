@@ -1,0 +1,15 @@
+@for (post of filteredPosts(); track post.postId) {
+  <div class="post-container">
+    <h6>{{ post.title }}</h6>
+    <p>Written by- {{ post.userId }}</p>
+    <a
+      [routerLink]="['post/', post.postId]"
+      routerLinkActive="active-link font-bold text-blue-600"
+      class="text-sm cursor-pointer"
+    >
+      View Details &rarr
+    </a>
+  </div>
+} @empty {
+  <p>No posts found for this user.</p>
+}

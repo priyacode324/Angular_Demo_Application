@@ -1,0 +1,9 @@
+<div class="container">
+    @for (user of users; track user) {
+      <app-user-component [myuser]="user" (emitter)="receiveData($event)" />
+    }
+   <!-- Conditionally spin up UserPostsComponent when a user is selected -->
+    @if (selectedUserId()) {
+      <app-user-posts [userId]="selectedUserId()!" />
+    } 
+</div>

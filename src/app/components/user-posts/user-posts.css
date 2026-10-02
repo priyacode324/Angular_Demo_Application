@@ -1,0 +1,10 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  border: 0.4rem solid rgb(168, 168, 237);
+  border-radius: 0.2rem;
+  column-gap: 0.2rem;
+}
+a{
+  text-decoration: none;
+}

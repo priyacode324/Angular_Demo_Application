@@ -1,0 +1,7 @@
+.usercontainer{
+    /* / background-color:rgb(187, 235, 216); */
+     color: gray;
+     font-weight: 700;
+     border: 0.5rem solid violet;
+     border-radius: 0.3rem;
+}

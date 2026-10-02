@@ -1,0 +1,40 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <!--#loginForm is a template variable when ngForm is assigned to it it gets supers powers as it becomes NgForm -->
+   <h2>Login</h2>
+  <div class="control-row">
+    <div class="control no-margin">
+      <label>Email: </label>
+      <input name="email" ngModel required email />
+      @if (
+        loginForm.form.controls['email']?.touched &&
+        loginForm.form.get('email')?.dirty &&
+        loginForm.form.controls['email'].invalid
+      ) {
+        <p>Invalid email entered</p>
+      }
+    </div>
+    <div class="control no-margin">
+      <label>Password: </label>
+      <input name="password" ngModel required minlength="6" />
+
+       @if (
+        loginForm.form.get('password')?.touched &&
+        loginForm.form.get('password')?.dirty &&
+        loginForm.form.get('password')?.invalid
+      ) {
+        <p>Invalid password entered</p>
+      } 
+    </div>
+    <button type="submit" class="button">Login</button>
+  </div>
+
+  <!-- @if(loginForm.form.controls['email'].touched ){}
+  This throws a TypeError Cannot read properties of undefined (reading 'touched') at the exact millisecond Angular is trying 
+to evaluate your @if condition on the very first render, loginForm.form.controls.email does not exist yet.
+
+The Lifecycle Gap: When the component loads, the <form> tag initializes first (loginForm), but the individual <input> controls 
+register themselves asynchronously during the initial change detection cycle.
+
+The Crash: For a brief microsecond before the email input registers itself, controls.email is undefined. When Angular tries to 
+read .touched of undefined, it throws a fatal error and crashes that part of the template.-->
+</form>

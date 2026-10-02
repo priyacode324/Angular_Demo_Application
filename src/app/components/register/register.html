@@ -1,0 +1,25 @@
+<form #registerForm="ngForm" (ngSubmit)="onRegister(registerForm)">
+    <p>Advanced Template Driven Form</p>
+    <div class="control">
+        <label>Username</label>
+        <input name="username" ngModel required minlength="5" #username="ngModel"/>
+    </div>
+    <div class="control">
+        <label>Email</label>
+        <input name="email" ngModel required email #email="ngModel"/>
+    </div>
+    <div class="control">
+        <label>Password</label>
+        <input name="password" ngModel required minlength="6" #password="ngModel"/>
+    </div>
+    @if((username.touched||submitted) && username.invalid){
+        <p>Invalid name entered</p>
+    }
+       @if((email.touched||submitted) && email.invalid){
+        <p>Invalid email address entered</p>
+    }
+       @if((password.touched ||submitted) && password.invalid){
+        <p>Invalid password entered -min length is 6 characters</p>
+    }
+    <button type="submit" class="register-btn">Register</button>
+</form>
